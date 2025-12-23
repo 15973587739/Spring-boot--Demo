@@ -1,0 +1,28 @@
+# 服务器配置
+server:
+  port: 8080  # 项目启动端口
+
+# 数据库连接配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver  # MySQL 8.x驱动类
+    url: jdbc:mysql://localhost:3306/student_management_system?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root  # 你的MySQL用户名
+    password: xinxin123  # 你的MySQL密码
+
+# MyBatis-Plus配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true  # 自动将下划线字段映射为驼峰字段
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 打印SQL日志（开发时用）
+  global-config:
+    db-config:
+      logic-delete-field: isDeleted  # 逻辑删除字段（可选）
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath:mapper/**/*.xml  # Mapper XML文件路径（若需要）
+  type-aliases-package: com.example.demo.model  # 实体类别名包
+# 开发环境日志级别（更详细）
+logging:
+  level:
+    com.yourpackage: DEBUG

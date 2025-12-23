@@ -1,0 +1,11 @@
+# 全局通用配置（所有环境都生效）
+spring:
+  application:
+    name: demo  # 替换为你的项目名
+  # 激活指定环境（dev 或 test）
+  profiles:
+    active: dev  # 切换环境只需改这里：dev 或 test
+
+# 其他全局配置（如服务器端口，也可放到环境专属配置中）
+server:
+  port: 8080
