@@ -88,6 +88,32 @@ public class UserController {
     }
 
     /**
+     * 分页查询用户
+     * 访问路径：http://localhost:8080/api/users/page?pageNum=1&pageSize=10
+     */
+    @GetMapping("/page")
+    public ResponseEntity<IPage<User>> pageUser(
+            @RequestParam(defaultValue = "1") Integer pageNum,
+            @RequestParam(defaultValue = "10") Integer pageSize) {
+        IPage<User> userPage = userService.pageUser(pageNum, pageSize);
+        return ResponseEntity.ok(userPage);
+    }
+
+    /**
+     * 带条件的分页查询
+     * 访问路径：http://localhost:8080/api/users/page/age?pageNum=1&pageSize=10&age=20
+     */
+    @GetMapping("/page/age")
+    public ResponseEntity<IPage<User>> pageUserByAge(
+            @RequestParam(defaultValue = "1") Integer pageNum,
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam Integer age) {
+        IPage<User> userPage = userService.pageUserByAge(pageNum, pageSize, age);
+        return ResponseEntity.ok(userPage);
+    }
+
+
+    /**
      * 5. 更新用户
      * 请求方式：PUT
      * 请求路径：/api/users/1
