@@ -5,6 +5,7 @@ spring:
   # 激活指定环境（dev 或 test）
   profiles:
     active: dev  # 切换环境只需改这里：dev 或 test
+    # 自定义API前缀配置（和server、spring同级，全局节点）
 
 # 其他全局配置（如服务器端口，也可放到环境专属配置中）
 server:

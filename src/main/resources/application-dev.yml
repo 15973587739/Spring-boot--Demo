@@ -1,12 +1,16 @@
 # 服务器配置
 server:
   port: 8080  # 项目启动端口
+  servlet:
+    context-path: /api # 自定义API前缀配置（和server、spring同级，全局节点）
+
+
 
 # 数据库连接配置
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver  # MySQL 8.x驱动类
-    url: jdbc:mysql://localhost:3306/student_management_system?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/demo_db?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root  # 你的MySQL用户名
     password: xinxin123  # 你的MySQL密码
 
@@ -22,7 +26,8 @@ mybatis-plus:
       logic-not-delete-value: 0
   mapper-locations: classpath:mapper/**/*.xml  # Mapper XML文件路径（若需要）
   type-aliases-package: com.example.demo.model  # 实体类别名包
-# 开发环境日志级别（更详细）
+
+# 开发环境日志级别（修正包名+格式）
 logging:
   level:
-    com.yourpackage: DEBUG
+    com.example.demo: DEBUG  # 改为你实际的项目包名，而非com.yourpackage
